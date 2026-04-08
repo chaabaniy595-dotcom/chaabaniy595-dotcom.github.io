@@ -1,161 +1,894 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Youssef Chaabani | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youssef Chaabani | Web Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Youssef Chaabani, a web developer focused on responsive websites, landing pages, and clean user experiences." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --panel: rgba(18, 25, 51, 0.75);
+      --panel-strong: rgba(20, 27, 56, 0.95);
+      --text: #f5f7ff;
+      --muted: #aab3d1;
+      --line: rgba(255, 255, 255, 0.08);
+      --brand: #7c9cff;
+      --brand-2: #5eead4;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --container: 1180px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    html {
+      scroll-behavior: smooth;
+    }
 
-<style>
-:root {
-    --bg: #0f172a;
-    --text: white;
-    --accent: #38bdf8;
-}
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124, 156, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(94, 234, 212, 0.12), transparent 22%),
+        linear-gradient(180deg, #090d1a 0%, #0b1020 45%, #080c18 100%);
+      line-height: 1.65;
+    }
 
-.light {
-    --bg: #ffffff;
-    --text: #111;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: 0.3s;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* PARTICLES */
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
 
-/* NAVBAR */
-header {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-}
+    .blur {
+      position: fixed;
+      inset: auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      filter: blur(80px);
+      opacity: 0.28;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-nav a {
-    margin-left: 20px;
-    color: var(--text);
-    text-decoration: none;
-}
+    .blur.one {
+      top: 50px;
+      left: -60px;
+      background: var(--brand);
+    }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    .blur.two {
+      top: 420px;
+      right: -80px;
+      background: var(--brand-2);
+    }
 
-/* BUTTON */
-.btn {
-    padding: 10px 25px;
-    border-radius: 20px;
-    background: var(--accent);
-    color: black;
-    text-decoration: none;
-    margin: 5px;
-}
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 10, 21, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-/* PROJECTS */
-.projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
+    nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 15px;
-}
+    .logo {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
 
-/* TOGGLE */
-.toggle {
-    cursor: pointer;
-}
-</style>
+    .logo span {
+      color: var(--brand-2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 48px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), #9d7dff);
+      color: white;
+      box-shadow: 0 12px 30px rgba(124, 156, 255, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--brand-2);
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #ffffff 25%, var(--brand-2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 690px;
+      font-size: 1.06rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat {
+      padding: 1rem 1.1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,156,255,0.18), transparent 45%, rgba(94,234,212,0.14));
+      pointer-events: none;
+    }
+
+    .window {
+      position: relative;
+      border-radius: 22px;
+      background: #0d142b;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 1rem 1rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .code-preview {
+      padding: 1.3rem;
+      color: #dbe6ff;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .code-preview .line {
+      display: block;
+      color: #d7e0ff;
+    }
+
+    .code-preview .line span {
+      color: #7c9cff;
+    }
+
+    section {
+      padding: 2rem 0 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.7rem, 2vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.4rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .badge-list,
+    .skills-grid,
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .badge,
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #eaf0ff;
+      font-size: 0.92rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .skill-chip {
+      min-height: 62px;
+      border-radius: 18px;
+      justify-content: flex-start;
+      padding-inline: 1rem;
+      font-weight: 600;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-image {
+      height: 220px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124,156,255,0.22), rgba(94,234,212,0.12));
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-image::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      filter: blur(10px);
+      top: -30px;
+      right: -30px;
+    }
+
+    .project-label {
+      position: relative;
+      z-index: 1;
+      width: calc(100% - 2rem);
+      border-radius: 18px;
+      background: rgba(10, 14, 31, 0.75);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .project-body {
+      padding: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      flex: 1;
+    }
+
+    .project-body h3 {
+      font-size: 1.15rem;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .project-links a {
+      color: var(--brand-2);
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .services-grid,
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card h3,
+    .why-card h3 {
+      margin-bottom: 0.55rem;
+      font-size: 1.05rem;
+    }
+
+    .service-card p,
+    .why-card p,
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .contact-list a {
+      min-height: 48px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 0.9rem;
+    }
+
+    .contact-item span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 1rem 0 2.8rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .grid-2,
+      .contact-grid,
+      .projects-grid,
+      .services-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding-top: 4.2rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        min-height: 72px;
+        align-items: flex-start;
+        padding: 1rem 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero-stats,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card {
+        padding: 0.9rem;
+      }
+
+      .window {
+        min-height: auto;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="blur one"></div>
+  <div class="blur two"></div>
 
-<div id="particles-js"></div>
-
-<header>
-    <h2>Youssef</h2>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <span class="toggle">🌙</span>
-    </nav>
-</header>
-
-<div class="hero">
-    <h1>Youssef Chaabani</h1>
-    <p>Web Developer | UI/UX Designer</p>
-</div>
-
-<section id="about">
-    <h2>About</h2>
-    <p>I build high-quality modern websites with animations and great UX.</p>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-
-    <div class="projects">
-        <div class="card">
-            <h3>Barber Website</h3>
-            <a href="#" class="btn">Live</a>
-            <a href="#" class="btn">GitHub</a>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">Youssef<span>.</span></a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#contact" class="btn btn-secondary">Contact</a>
         </div>
+      </nav>
     </div>
+  </div>
 
-</section>
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal visible">
+        <div class="eyebrow">Available for freelance work</div>
+        <h1>Building <span>modern websites</span> that look sharp and work smoothly.</h1>
+        <p>
+          I’m Youssef Chaabani, a web developer focused on responsive business websites, landing pages, and clean user experiences.
+          I build fast, modern interfaces with strong structure, clear design, and attention to detail.
+        </p>
 
-<section id="contact">
-    <h2>Contact</h2>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Hire Me</a>
+        </div>
 
-    <form action="https://formspree.io/f/your-id" method="POST">
-        <input type="text" name="name" placeholder="Name"><br>
-        <input type="email" name="email" placeholder="Email"><br>
-        <textarea name="message"></textarea><br>
-        <button class="btn">Send</button>
-    </form>
-</section>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>3+</strong>
+            <span>Portfolio Projects</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Responsive Layouts</span>
+          </div>
+          <div class="stat">
+            <strong>Fast</strong>
+            <span>Delivery & Communication</span>
+          </div>
+        </div>
+      </div>
 
-<script>
-/* DARK MODE */
-document.querySelector('.toggle').onclick = () => {
-    document.body.classList.toggle('light');
-};
+      <div class="hero-card reveal">
+        <div class="window">
+          <div class="window-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="code-preview">
+            <span class="line"><span>const</span> developer = &#123;</span>
+            <span class="line">&nbsp;&nbsp;name: "Youssef Chaabani",</span>
+            <span class="line">&nbsp;&nbsp;role: "Web Developer",</span>
+            <span class="line">&nbsp;&nbsp;focus: ["Responsive Design", "Landing Pages", "Modern UI"],</span>
+            <span class="line">&nbsp;&nbsp;status: "Available for freelance work"</span>
+            <span class="line">&#125;;</span>
+            <br />
+            <span class="line"><span>function</span> buildWebsite(client) &#123;</span>
+            <span class="line">&nbsp;&nbsp;return "Clean, modern, and user-focused result";</span>
+            <span class="line">&#125;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-/* PARTICLES */
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 60 },
-    size: { value: 3 },
-    move: { speed: 2 }
-  }
-});
-</script>
+  <main>
+    <section id="about">
+      <div class="container grid-2">
+        <div class="card about reveal">
+          <div class="section-title">
+            <h2>About Me</h2>
+          </div>
+          <p>
+            I create professional websites that help businesses and personal brands present themselves clearly online.
+            My goal is simple: build pages that look modern, feel smooth, and work well on every screen size.
+          </p>
+          <p>
+            I care about clean code, responsive layouts, simple user flows, and a polished visual result.
+            Whether it is a landing page, portfolio, or small business website, I focus on clarity and quality.
+          </p>
+          <div class="badge-list">
+            <span class="badge">Responsive Design</span>
+            <span class="badge">Modern UI</span>
+            <span class="badge">Clean Code</span>
+            <span class="badge">Landing Pages</span>
+            <span class="badge">Business Websites</span>
+            <span class="badge">Portfolio Sites</span>
+          </div>
+        </div>
 
+        <div class="card reveal">
+          <div class="section-title">
+            <h2>Why Work With Me</h2>
+          </div>
+          <div class="why-grid">
+            <div class="why-card">
+              <h3>Responsive First</h3>
+              <p>Every layout is designed to look strong on mobile, tablet, and desktop.</p>
+            </div>
+            <div class="why-card">
+              <h3>Clean Design</h3>
+              <p>I focus on visual clarity, spacing, modern sections, and a professional feel.</p>
+            </div>
+            <div class="why-card">
+              <h3>Clear Communication</h3>
+              <p>I keep work simple, organized, and easy to follow from start to finish.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>Technologies and tools I use to build modern websites and user interfaces.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-chip">HTML5</div>
+          <div class="skill-chip">CSS3</div>
+          <div class="skill-chip">JavaScript</div>
+          <div class="skill-chip">Responsive Design</div>
+          <div class="skill-chip">Git & GitHub</div>
+          <div class="skill-chip">UI / UX Basics</div>
+          <div class="skill-chip">Figma</div>
+          <div class="skill-chip">Landing Pages</div>
+          <div class="skill-chip">Website Optimization</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2>Featured Projects</h2>
+          <p>Replace the demo links below with your real project links from GitHub and live demos.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card project-card">
+            <div class="project-image">
+              <div class="project-label">
+                <strong>Barber Website</strong>
+                <p>Clean landing page for a local barbershop brand.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Modern Barber Landing Page</h3>
+              <p>
+                A stylish website concept designed to showcase services, pricing, opening hours, and booking information in a clean responsive layout.
+              </p>
+              <div class="project-tech">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-image">
+              <div class="project-label">
+                <strong>Business Website</strong>
+                <p>Professional site for a service-based business.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Responsive Business Website</h3>
+              <p>
+                A multi-section website built to present a business clearly with strong calls to action, service sections, and a professional modern design.
+              </p>
+              <div class="project-tech">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">UI Design</span>
+              </div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-image">
+              <div class="project-label">
+                <strong>Personal Portfolio</strong>
+                <p>Portfolio website with strong visual hierarchy.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Developer Portfolio Website</h3>
+              <p>
+                A polished portfolio homepage built to present skills, projects, and contact details in a modern way that feels professional and easy to navigate.
+              </p>
+              <div class="project-tech">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">Responsive</span>
+              </div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Simple, useful services I can offer to clients and small businesses.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="card service-card">
+            <h3>Landing Pages</h3>
+            <p>I create focused landing pages designed to present offers clearly and guide visitors to take action.</p>
+          </div>
+          <div class="card service-card">
+            <h3>Business Websites</h3>
+            <p>I build clean websites for shops, brands, and local businesses that want a stronger online presence.</p>
+          </div>
+          <div class="card service-card">
+            <h3>Portfolio Websites</h3>
+            <p>I design portfolio websites that present work, skills, and contact details in a professional way.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid reveal">
+        <div class="card contact-card">
+          <div class="section-title">
+            <h2>Let’s Work Together</h2>
+          </div>
+          <p>
+            Need a modern website for your business or personal brand? I am available for freelance work and open to new opportunities.
+          </p>
+
+          <div class="contact-item">
+            <div>
+              <strong>Email</strong>
+              <span>Replace with your real email</span>
+            </div>
+            <a href="mailto:yourname@email.com" class="btn btn-secondary">Send Email</a>
+          </div>
+
+          <div class="contact-item">
+            <div>
+              <strong>GitHub</strong>
+              <span>Show your code and projects</span>
+            </div>
+            <a href="https://github.com/chaabaniy595" target="_blank" rel="noopener" class="btn btn-secondary">View GitHub</a>
+          </div>
+
+          <div class="contact-item">
+            <div>
+              <strong>Location</strong>
+              <span>Tunisia</span>
+            </div>
+            <a href="#home" class="btn btn-secondary">Back to Top</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="section-title">
+            <h2>Quick Highlights</h2>
+          </div>
+          <div class="badge-list">
+            <span class="badge">Freelance Ready</span>
+            <span class="badge">Fast Learner</span>
+            <span class="badge">Clean Layouts</span>
+            <span class="badge">Modern Style</span>
+            <span class="badge">Good Communication</span>
+            <span class="badge">Focused on Quality</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Youssef Chaabani. Built with focus, clean code, and modern design.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((element, index) => {
+      if (!element.classList.contains('visible') || index !== 0) {
+        observer.observe(element);
+      }
+    });
+  </script>
 </body>
 </html>
