@@ -159,6 +159,44 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lang-select {
+      min-height: 48px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      padding: 0 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .lang-select:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .rtl .hero,
+    .rtl .project-body,
+    .rtl .contact-item,
+    .rtl .section-title {
+      text-align: right;
+    }
+
+    .rtl .nav-links {
+      direction: rtl;
+    }
+
+    .rtl .search-input,
+    .rtl .lang-select {
+      direction: rtl;
+    }
+
     .hero {
       padding: 5.5rem 0 3.5rem;
     }
@@ -592,12 +630,19 @@
     <div class="container">
       <nav>
         <a href="#home" class="logo">Youssef<span>.</span></a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#services">Services</a>
-          <a href="#contact" class="btn btn-secondary">Contact</a>
+        <div class="nav-actions">
+          <div class="nav-links">
+            <a id="navAbout" href="#about">About</a>
+            <a id="navSkills" href="#skills">Skills</a>
+            <a id="navProjects" href="#projects">Projects</a>
+            <a id="navServices" href="#services">Services</a>
+            <a id="navContact" href="#contact" class="btn btn-secondary">Contact</a>
+          </div>
+          <select id="languageSelect" class="lang-select">
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="ar">AR</option>
+          </select>
         </div>
       </nav>
     </div>
@@ -606,30 +651,30 @@
   <header class="hero" id="home">
     <div class="container hero-grid">
       <div class="reveal visible">
-        <div class="eyebrow">Available for freelance work</div>
-        <h1>Building <span>modern websites</span> that look sharp and work smoothly.</h1>
-        <p>
+        <div id="heroEyebrow" class="eyebrow">Available for freelance work</div>
+        <h1 id="heroTitle">Building <span>modern websites</span> that look sharp and work smoothly.</h1>
+        <p id="heroText">
           I'm Youssef Chaabani, a web developer focused on responsive business websites, landing pages, and clean user experiences.
           I build fast, modern interfaces with strong structure, clear design, and attention to detail.
         </p>
 
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-secondary">Hire Me</a>
+          <a id="heroBtnProjects" href="#projects" class="btn btn-primary">View Projects</a>
+          <a id="heroBtnContact" href="#contact" class="btn btn-secondary">Hire Me</a>
         </div>
 
         <div class="hero-stats">
           <div class="stat">
             <strong>3+</strong>
-            <span>Portfolio Projects</span>
+            <span id="statLabelProjects">Portfolio Projects</span>
           </div>
           <div class="stat">
             <strong>100%</strong>
-            <span>Responsive Layouts</span>
+            <span id="statLabelResponsive">Responsive Layouts</span>
           </div>
           <div class="stat">
             <strong>Fast</strong>
-            <span>Delivery & Communication</span>
+            <span id="statLabelDelivery">Delivery & Communication</span>
           </div>
         </div>
       </div>
@@ -663,13 +708,13 @@
       <div class="container grid-2">
         <div class="card about reveal">
           <div class="section-title">
-            <h2>About Me</h2>
+            <h2 id="aboutTitle">About Me</h2>
           </div>
-          <p>
+          <p id="aboutText1">
             I create professional websites that help businesses and personal brands present themselves clearly online.
             My goal is simple: build pages that look modern, feel smooth, and work well on every screen size.
           </p>
-          <p>
+          <p id="aboutText2">
             I care about clean code, responsive layouts, simple user flows, and a polished visual result.
             Whether it is a landing page, portfolio, or small business website, I focus on clarity and quality.
           </p>
@@ -685,20 +730,20 @@
 
         <div class="card reveal">
           <div class="section-title">
-            <h2>Why Work With Me</h2>
+            <h2 id="whyTitle">Why Work With Me</h2>
           </div>
           <div class="why-grid">
             <div class="why-card">
-              <h3>Responsive First</h3>
-              <p>Every layout is designed to look strong on mobile, tablet, and desktop.</p>
+              <h3 id="whyCard1Title">Responsive First</h3>
+              <p id="whyCard1Text">Every layout is designed to look strong on mobile, tablet, and desktop.</p>
             </div>
             <div class="why-card">
-              <h3>Clean Design</h3>
-              <p>I focus on visual clarity, spacing, modern sections, and a professional feel.</p>
+              <h3 id="whyCard2Title">Clean Design</h3>
+              <p id="whyCard2Text">I focus on visual clarity, spacing, modern sections, and a professional feel.</p>
             </div>
             <div class="why-card">
-              <h3>Clear Communication</h3>
-              <p>I keep work simple, organized, and easy to follow from start to finish.</p>
+              <h3 id="whyCard3Title">Clear Communication</h3>
+              <p id="whyCard3Text">I keep work simple, organized, and easy to follow from start to finish.</p>
             </div>
           </div>
         </div>
@@ -708,8 +753,8 @@
     <section id="skills">
       <div class="container reveal">
         <div class="section-title">
-          <h2>Skills</h2>
-          <p>Technologies and tools I use to build modern websites and user interfaces.</p>
+          <h2 id="skillsTitle">Skills</h2>
+          <p id="skillsDesc">Technologies and tools I use to build modern websites and user interfaces.</p>
         </div>
         <div class="skills-grid">
           <div class="skill-chip">HTML5</div>
@@ -728,8 +773,8 @@
     <section id="projects">
       <div class="container reveal">
         <div class="section-title">
-          <h2>Featured Projects</h2>
-          <p>Click on the demo buttons to preview the projects directly on this page.</p>
+          <h2 id="projectsTitle">Featured Projects</h2>
+          <p id="projectsDesc">Click on the demo buttons to preview the projects directly on this page.</p>
         </div>
 
         <div class="projects-grid">
@@ -774,7 +819,7 @@
                 <span class="badge">UI Design</span>
               </div>
               <div class="project-links">
-                <button class="btn btn-secondary" data-src="car.html">Live Demo</button>
+                <button class="btn btn-secondary" data-src="index.html">Live Demo</button>
               </div>
             </div>
           </article>
@@ -812,22 +857,22 @@
     <section id="services">
       <div class="container reveal">
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Simple, useful services I can offer to clients and small businesses.</p>
+          <h2 id="servicesTitle">Services</h2>
+          <p id="servicesDesc">Simple, useful services I can offer to clients and small businesses.</p>
         </div>
 
         <div class="services-grid">
           <div class="card service-card">
-            <h3>Landing Pages</h3>
-            <p>I create focused landing pages designed to present offers clearly and guide visitors to take action.</p>
+            <h3 id="service1Title">Landing Pages</h3>
+            <p id="service1Text">I create focused landing pages designed to present offers clearly and guide visitors to take action.</p>
           </div>
           <div class="card service-card">
-            <h3>Business Websites</h3>
-            <p>I build clean websites for shops, brands, and local businesses that want a stronger online presence.</p>
+            <h3 id="service2Title">Business Websites</h3>
+            <p id="service2Text">I build clean websites for shops, brands, and local businesses that want a stronger online presence.</p>
           </div>
           <div class="card service-card">
-            <h3>Portfolio Websites</h3>
-            <p>I design portfolio websites that present work, skills, and contact details in a professional way.</p>
+            <h3 id="service3Title">Portfolio Websites</h3>
+            <p id="service3Text">I design portfolio websites that present work, skills, and contact details in a professional way.</p>
           </div>
         </div>
       </div>
@@ -837,48 +882,48 @@
       <div class="container contact-grid reveal">
         <div class="card contact-card">
           <div class="section-title">
-            <h2>Let's Work Together</h2>
+            <h2 id="contactTitle">Let's Work Together</h2>
           </div>
-          <p>
+          <p id="contactText">
             Need a modern website for your business or personal brand? I am available for freelance work and open to new opportunities.
           </p>
 
           <div class="contact-item">
             <div>
-              <strong>Email</strong>
+              <strong id="contactEmailLabel">Email</strong>
               <span>chaabaniy595@email.com</span>
             </div>
-            <a href="mailto:chaabaniy595@email.com" class="btn btn-secondary">Send Email</a>
+            <a id="emailButton" href="mailto:chaabaniy595@email.com" class="btn btn-secondary">Send Email</a>
           </div>
 
           <div class="contact-item">
             <div>
-              <strong>Phone</strong>
+              <strong id="contactPhoneLabel">Phone</strong>
               <span>+216 23 144 918</span>
             </div>
-            <a href="https://wa.me/21623144918" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">WhatsApp</a>
+            <a id="whatsappButton" href="https://wa.me/21623144918" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">WhatsApp</a>
           </div>
 
           <div class="contact-item">
             <div>
-              <strong>Instagram</strong>
+              <strong id="contactInstagramLabel">Instagram</strong>
               <span>@_ysffffffff_prv_</span>
             </div>
-            <a href="https://www.instagram.com/_ysffffffff_prv_?utm_source=qr&igsh=MW5zZjlsamVjMDV5Zg==" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow</a>
+            <a id="instagramButton" href="https://www.instagram.com/_ysffffffff_prv_?utm_source=qr&igsh=MW5zZjlsamVjMDV5Zg==" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow</a>
           </div>
 
           <div class="contact-item">
             <div>
-              <strong>Location</strong>
+              <strong id="contactLocationLabel">Location</strong>
               <span>Tunisia</span>
             </div>
-            <a href="#home" class="btn btn-secondary">Back to Top</a>
+            <a id="backToTopButton" href="#home" class="btn btn-secondary">Back to Top</a>
           </div>
         </div>
 
         <div class="card reveal">
           <div class="section-title">
-            <h2>Quick Highlights</h2>
+            <h2 id="quickHighlightsTitle">Quick Highlights</h2>
           </div>
           <div class="badge-list">
             <span class="badge">Freelance Ready</span>
@@ -895,7 +940,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 Youssef Chaabani. Built with focus, clean code, and modern design.</p>
+      <p id="footerText">© 2026 Youssef Chaabani. Built with focus, clean code, and modern design.</p>
     </div>
   </footer>
 
@@ -917,6 +962,181 @@
     const projectButtons = document.querySelectorAll('[data-src]');
     const projectPreview = document.getElementById('projectPreview');
     const projectFrame = document.getElementById('projectFrame');
+    const languageSelect = document.getElementById('languageSelect');
+    const root = document.documentElement;
+
+    const translations = {
+      en: {
+        navAbout: 'About',
+        navSkills: 'Skills',
+        navProjects: 'Projects',
+        navServices: 'Services',
+        navContact: 'Contact',
+        heroEyebrow: 'Available for freelance work',
+        heroTitle: 'Building <span>modern websites</span> that look sharp and work smoothly.',
+        heroText: "I'm Youssef Chaabani, a web developer focused on responsive business websites, landing pages, and clean user experiences. I build fast, modern interfaces with strong structure, clear design, and attention to detail.",
+        heroBtnProjects: 'View Projects',
+        heroBtnContact: 'Hire Me',
+        statLabelProjects: 'Portfolio Projects',
+        statLabelResponsive: 'Responsive Layouts',
+        statLabelDelivery: 'Delivery & Communication',
+        aboutTitle: 'About Me',
+        aboutText1: 'I create professional websites that help businesses and personal brands present themselves clearly online. My goal is simple: build pages that look modern, feel smooth, and work well on every screen size.',
+        aboutText2: 'I care about clean code, responsive layouts, simple user flows, and a polished visual result. Whether it is a landing page, portfolio, or small business website, I focus on clarity and quality.',
+        whyTitle: 'Why Work With Me',
+        whyCard1Title: 'Responsive First',
+        whyCard1Text: 'Every layout is designed to look strong on mobile, tablet, and desktop.',
+        whyCard2Title: 'Clean Design',
+        whyCard2Text: 'I focus on visual clarity, spacing, modern sections, and a professional feel.',
+        whyCard3Title: 'Clear Communication',
+        whyCard3Text: 'I keep work simple, organized, and easy to follow from start to finish.',
+        skillsTitle: 'Skills',
+        skillsDesc: 'Technologies and tools I use to build modern websites and user interfaces.',
+        projectsTitle: 'Featured Projects',
+        projectsDesc: 'Click on the demo buttons to preview the projects directly on this page.',
+        servicesTitle: 'Services',
+        servicesDesc: 'Simple, useful services I can offer to clients and small businesses.',
+        service1Title: 'Landing Pages',
+        service1Text: 'I create focused landing pages designed to present offers clearly and guide visitors to take action.',
+        service2Title: 'Business Websites',
+        service2Text: 'I build clean websites for shops, brands, and local businesses that want a stronger online presence.',
+        service3Title: 'Portfolio Websites',
+        service3Text: 'I design portfolio websites that present work, skills, and contact details in a professional way.',
+        contactTitle: "Let's Work Together",
+        contactText: 'Need a modern website for your business or personal brand? I am available for freelance work and open to new opportunities.',
+        contactEmailLabel: 'Email',
+        emailButton: 'Send Email',
+        contactPhoneLabel: 'Phone',
+        whatsappButton: 'WhatsApp',
+        contactInstagramLabel: 'Instagram',
+        instagramButton: 'Follow',
+        contactLocationLabel: 'Location',
+        backToTopButton: 'Back to Top',
+        quickHighlightsTitle: 'Quick Highlights',
+        footerText: '© 2026 Youssef Chaabani. Built with focus, clean code, and modern design.'
+      },
+      fr: {
+        navAbout: 'À propos',
+        navSkills: 'Compétences',
+        navProjects: 'Projets',
+        navServices: 'Services',
+        navContact: 'Contact',
+        heroEyebrow: 'Disponible pour freelance',
+        heroTitle: 'Création de <span>sites modernes</span> qui sont élégants et fluides.',
+        heroText: "Je suis Youssef Chaabani, développeur web spécialisé dans les sites responsive, les pages de destination et les expériences utilisateur nettes. Je construis des interfaces rapides et modernes avec une structure solide, un design clair et une attention aux détails.",
+        heroBtnProjects: 'Voir les projets',
+        heroBtnContact: 'Engagez-moi',
+        statLabelProjects: 'Projets de portfolio',
+        statLabelResponsive: 'Layouts Responsive',
+        statLabelDelivery: 'Livraison & Communication',
+        aboutTitle: 'À propos de moi',
+        aboutText1: 'Je crée des sites professionnels qui aident les entreprises et les marques personnelles à se présenter clairement en ligne. Mon objectif est simple : concevoir des pages modernes, fluides et adaptées à toutes les tailles d’écran.',
+        aboutText2: 'Je travaille avec du code propre, des mises en page responsives, des flux utilisateur simples et un rendu visuel soigné. Que ce soit une landing page, un portfolio ou un site professionnel, je privilégie la clarté et la qualité.',
+        whyTitle: 'Pourquoi travailler avec moi',
+        whyCard1Title: 'Responsive en priorité',
+        whyCard1Text: 'Chaque mise en page est conçue pour être performante sur mobile, tablette et desktop.',
+        whyCard2Title: 'Design épuré',
+        whyCard2Text: 'Je mets l’accent sur la clarté visuelle, les espaces, les sections modernes et une sensation professionnelle.',
+        whyCard3Title: 'Communication claire',
+        whyCard3Text: 'Je garde le travail simple, organisé et facile à suivre du début à la fin.',
+        skillsTitle: 'Compétences',
+        skillsDesc: 'Technologies et outils que j’utilise pour construire des sites modernes et des interfaces utilisateur.',
+        projectsTitle: 'Projets phares',
+        projectsDesc: 'Cliquez sur les boutons de démonstration pour prévisualiser les projets directement sur cette page.',
+        servicesTitle: 'Services',
+        servicesDesc: 'Services simples et utiles que je peux proposer aux clients et aux petites entreprises.',
+        service1Title: 'Pages de destination',
+        service1Text: 'Je crée des landing pages ciblées conçues pour présenter les offres clairement et guider les visiteurs vers l’action.',
+        service2Title: 'Sites professionnels',
+        service2Text: 'Je construis des sites clairs pour les boutiques, les marques et les petites entreprises qui veulent une présence en ligne plus forte.',
+        service3Title: 'Portfolios',
+        service3Text: 'Je conçois des sites portfolio qui présentent le travail, les compétences et les contacts de façon professionnelle.',
+        contactTitle: 'Travaillons ensemble',
+        contactText: 'Besoin d’un site moderne pour votre entreprise ou votre marque personnelle ? Je suis disponible pour des missions freelance et ouvert à de nouvelles opportunités.',
+        contactEmailLabel: 'Email',
+        emailButton: 'Envoyer un email',
+        contactPhoneLabel: 'Téléphone',
+        whatsappButton: 'WhatsApp',
+        contactInstagramLabel: 'Instagram',
+        instagramButton: 'Suivre',
+        contactLocationLabel: 'Localisation',
+        backToTopButton: 'Haut de page',
+        quickHighlightsTitle: 'Points forts',
+        footerText: '© 2026 Youssef Chaabani. Construit avec soin, code propre et design moderne.'
+      },
+      ar: {
+        navAbout: 'نبذة',
+        navSkills: 'المهارات',
+        navProjects: 'المشاريع',
+        navServices: 'الخدمات',
+        navContact: 'تواصل',
+        heroEyebrow: 'متاح للعمل الحر',
+        heroTitle: 'أبني <span>مواقع حديثة</span> بجودة عالية وتجربة سلسة.',
+        heroText: 'أنا يوسف الشاعبي، مطور ويب متخصص في مواقع الأعمال المتجاوبة وصفحات الهبوط وتجارب المستخدم النظيفة. أبني واجهات سريعة وحديثة مع بنية قوية وتصميم واضح واهتمام بالتفاصيل.',
+        heroBtnProjects: 'عرض المشاريع',
+        heroBtnContact: 'تواصل معي',
+        statLabelProjects: 'مشاريع المحافظ',
+        statLabelResponsive: 'تصاميم متجاوبة',
+        statLabelDelivery: 'التسليم والتواصل',
+        aboutTitle: 'من أنا',
+        aboutText1: 'أصمم مواقع احترافية تساعد الشركات والعلامات التجارية في الظهور بوضوح على الإنترنت. هدفي بسيط: بناء صفحات حديثة وسلسة تعمل بشكل جيد على جميع الأجهزة.',
+        aboutText2: 'أركز على الشفرة النظيفة والتخطيطات المتجاوبة وتدفقات المستخدم البسيطة ونتيجة بصرية مصقولة. سواء كانت صفحة هبوط أو موقع محفظة أو موقع أعمال، أركز على الوضوح والجودة.',
+        whyTitle: 'لماذا تعمل معي',
+        whyCard1Title: 'التجاوب أولاً',
+        whyCard1Text: 'كل تصميم مصمم ليعمل بشكل ممتاز على الهاتف والجهاز اللوحي وسطح المكتب.',
+        whyCard2Title: 'تصميم نظيف',
+        whyCard2Text: 'أركز على الوضوح البصري والمساحات والتقسيمات الحديثة والشعور الاحترافي.',
+        whyCard3Title: 'تواصل واضح',
+        whyCard3Text: 'أجعل العمل بسيطاً ومنظماً وسهل المتابعة من البداية إلى النهاية.',
+        skillsTitle: 'المهارات',
+        skillsDesc: 'التقنيات والأدوات التي أستخدمها لبناء مواقع حديثة وواجهات مستخدم مميزة.',
+        projectsTitle: 'المشاريع المميزة',
+        projectsDesc: 'انقر على أزرار العرض لمعاينة المشاريع مباشرة على هذه الصفحة.',
+        servicesTitle: 'الخدمات',
+        servicesDesc: 'خدمات بسيطة ومفيدة أقدمها للعملاء والشركات الصغيرة.',
+        service1Title: 'صفحات هبوط',
+        service1Text: 'أصمم صفحات هبوط مركزة لعرض العروض بشكل واضح ودفع الزوار إلى اتخاذ الإجراء.',
+        service2Title: 'مواقع أعمال',
+        service2Text: 'أبني مواقع نظيفة للمحلات والعلامات التجارية والشركات الصغيرة التي تريد تواجداً أقوى على الإنترنت.',
+        service3Title: 'مواقع محافظ',
+        service3Text: 'أصمم مواقع محفظة تعرض الأعمال والمهارات والتواصل بطريقة احترافية.',
+        contactTitle: 'لنبدأ العمل معاً',
+        contactText: 'هل تحتاج موقعاً حديثاً لعملك أو علامتك الشخصية؟ أنا متاح للعمل الحر ومفتوح لفرص جديدة.',
+        contactEmailLabel: 'البريد الإلكتروني',
+        emailButton: 'إرسال بريد',
+        contactPhoneLabel: 'الهاتف',
+        whatsappButton: 'واتساب',
+        contactInstagramLabel: 'انستغرام',
+        instagramButton: 'متابعة',
+        contactLocationLabel: 'الموقع',
+        backToTopButton: 'العودة للأعلى',
+        quickHighlightsTitle: 'أهم النقاط',
+        footerText: '© 2026 يوسف الشاعبي. مبني بدقة، كود نظيف، وتصميم حديث.'
+      }
+    };
+
+    const updateLanguage = (lang) => {
+      const selected = translations[lang] || translations.en;
+      Object.entries(selected).forEach(([id, text]) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+        if (id === 'heroTitle') {
+          element.innerHTML = text;
+        } else {
+          element.textContent = text;
+        }
+      });
+
+      root.setAttribute('lang', lang);
+      root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.body.classList.toggle('rtl', lang === 'ar');
+    };
+
+    languageSelect.addEventListener('change', (event) => {
+      updateLanguage(event.target.value);
+    });
+
+    updateLanguage('en');
 
     projectButtons.forEach(button => {
       button.addEventListener('click', () => {
