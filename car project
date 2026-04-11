@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DrivePro — Premium Cars & Leasing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#">DrivePro</a>
+        <nav class="nav" id="nav">
+          <a href="#inventory">Inventory</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="btn btn-outline">Contact</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1>Find Your Perfect Drive</h1>
+            <p>Premium cars, competitive leasing, and tailored financing — all in one place. Browse certified vehicles and book a test drive today.</p>
+            <div class="hero-cta">
+              <a href="#inventory" class="btn btn-primary">Browse Inventory</a>
+              <a href="#contact" class="btn btn-outline">Get a Quote</a>
+            </div>
+            <ul class="stats">
+              <li><strong>1,200+</strong> Vehicles</li>
+              <li><strong>10+</strong> Brands</li>
+              <li><strong>95%</strong> Customer Satisfaction</li>
+            </ul>
+          </div>
+          <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1549921296-3d1f36b5003a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5a3abc2b86d9f7f5f9f2b0a2c6c3f5c6" alt="Sleek car"/>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="container section services">
+        <h2>Our Services</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Sales & Leasing</h3>
+            <p>Flexible purchase or lease options tailored to individuals and businesses.</p>
+          </article>
+          <article class="card">
+            <h3>Certified Inspection</h3>
+            <p>Every vehicle passes a comprehensive multi-point inspection and reconditioning.</p>
+          </article>
+          <article class="card">
+            <h3>Financing Support</h3>
+            <p>Quick pre-approval, competitive rates, and custom payment plans.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="inventory" class="container section inventory">
+        <h2>Featured Inventory</h2>
+        <div class="grid-3">
+          <div class="car-card">
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=0d0b8b6c1a9f2f3f7a4c5d1e2b3a4c6d" alt="Car 1">
+            <div class="car-body">
+              <h3>2019 Mercedes-Benz C-Class</h3>
+              <p class="price">$29,900</p>
+              <a class="btn btn-secondary" href="#contact">Inquire</a>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8d6b2b5a1c9f3d4a6b7c8d9e0a1b2c3d" alt="Car 2">
+            <div class="car-body">
+              <h3>2020 BMW 3 Series</h3>
+              <p class="price">$32,400</p>
+              <a class="btn btn-secondary" href="#contact">Inquire</a>
+            </div>
+          </div>
+          <div class="car-card">
+            <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b7a3c1f9d2a4b6c7d8e9f0a1b2c3d4e" alt="Car 3">
+            <div class="car-body">
+              <h3>2021 Audi A4</h3>
+              <p class="price">$34,100</p>
+              <a class="btn btn-secondary" href="#contact">Inquire</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="container section about">
+        <div class="about-grid">
+          <div>
+            <h2>Why DrivePro?</h2>
+            <p>We combine a curated selection of vehicles, transparent pricing, and a team of auto experts to make buying or leasing a car simple and enjoyable.</p>
+            <ul>
+              <li>Hand-selected, certified vehicles</li>
+              <li>Transparent history reports</li>
+              <li>Dedicated customer success team</li>
+            </ul>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3c9a1b2d4e5f6a7b8c9d0e1f2a3b4c5d" alt="Team" />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="container section contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-grid">
+          <form id="contactForm" class="form">
+            <label>Full name<input type="text" name="name" required></label>
+            <label>Email<input type="email" name="email" required></label>
+            <label>Message<textarea name="message" rows="4" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <p id="formMsg" class="form-msg" aria-live="polite"></p>
+          </form>
+          <div class="contact-info">
+            <h3>Visit Us</h3>
+            <p>123 Auto Avenue<br/>City, State • 12345</p>
+            <h3>Call</h3>
+            <p>(555) 123-4567</p>
+            <h3>Hours</h3>
+            <p>Mon—Sat: 9am — 6pm</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> DrivePro. All rights reserved.</p>
+        <nav class="footer-nav">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
