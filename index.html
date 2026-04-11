@@ -1,471 +1,1180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warrior Barber - Saif</title>
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youssef Chaabani | Web Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Youssef Chaabani, a web developer focused on responsive websites, landing pages, and clean user experiences." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --panel: rgba(18, 25, 51, 0.75);
+      --panel-strong: rgba(20, 27, 56, 0.95);
+      --text: #f5f7ff;
+      --muted: #aab3d1;
+      --line: rgba(255, 255, 255, 0.08);
+      --brand: #7c9cff;
+      --brand-2: #5eead4;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --container: 1180px;
+    }
 
-:root {
-    /* Premium Palette */
-    --bg-color: #1a1a1d;         /* Almost Black */
-    --card-bg: #2d2d34;          /* Dark Charcoal */
-    --text-color: #f5f5f5;       /* White Smoke */
-    --accent-color: #d4af37;     /* Metallic Gold */
-    --accent-hover: #b39028;     /* Darker Gold */
-    --secondary: #950740;        /* Deep Crimson (optional accent) */
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: "Poppins", sans-serif;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body {
-    background-color: var(--bg-color);
-    background-image: radial-gradient(circle at 50% 50%, #25252b 0%, #1a1a1d 100%);
-    color: var(--text-color);
-    line-height: 1.6;
-}
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at top left, rgba(124, 156, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(94, 234, 212, 0.12), transparent 22%),
+        linear-gradient(180deg, #000011 0%, #0b1020 45%, #000022 100%);
+      line-height: 1.65;
+    }
 
-/* Header & Nav */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background-color: rgba(26, 26, 29, 0.95);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-.logo {
-    height: 60px;
-    width: auto;
-    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.navigation ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
 
-.navigation a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: all 0.3s;
-    position: relative;
-}
+    .blur {
+      position: fixed;
+      inset: auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      filter: blur(80px);
+      opacity: 0.28;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-.navigation a:hover {
-    color: var(--accent-color);
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
-}
+    .blur.one {
+      top: 50px;
+      left: -60px;
+      background: var(--brand);
+    }
 
-/* Hero Section */
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 8rem 1rem;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('12.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 70vh;
-    justify-content: center;
-    border-bottom: 3px solid var(--accent-color);
-}
+    .blur.two {
+      top: 420px;
+      right: -80px;
+      background: var(--brand-2);
+    }
 
-.hero h1 {
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    letter-spacing: 3px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-}
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 10, 21, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-.hero .title {
-    color: var(--accent-color);
-    font-size: 4.5rem;
-    font-weight: 700;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-}
+    nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2.5rem;
-    max-width: 600px;
-    opacity: 0.9;
-}
+    .logo {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
 
-.btn {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background: linear-gradient(45deg, var(--accent-color), #f3c648);
-    color: #1a1a1d;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-}
+    .logo span {
+      color: var(--brand-2);
+    }
 
-.btn:hover {
-    background: linear-gradient(45deg, #f3c648, var(--accent-color));
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-/* Section Styling */
-section {
-    padding: 5rem 5%;
-}
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: 0.25s ease;
+    }
 
-.section-title {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 4rem;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    position: relative;
-    letter-spacing: 2px;
-}
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
-.section-title::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: var(--text-color);
-    margin: 15px auto 0;
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 48px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      cursor: pointer;
+    }
 
-/* Video Gallery */
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
-.video-item video {
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    border: 2px solid #333;
-    transition: border-color 0.3s;
-}
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), #9d7dff);
+      color: white;
+      box-shadow: 0 12px 30px rgba(124, 156, 255, 0.28);
+    }
 
-.video-item video:hover {
-    border-color: var(--accent-color);
-}
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--text);
+    }
 
-/* Reservation Form */
-.reservation-container {
-    background-color: var(--card-bg);
-    padding: 3rem;
-    border-radius: 20px;
-    max-width: 650px;
-    margin: 0 auto;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(212, 175, 55, 0.1);
-}
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.8rem;
-    font-weight: 600;
-    color: var(--accent-color);
-}
+    .lang-select {
+      min-height: 48px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      padding: 0 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
 
-.form-group input, .form-group select {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #444;
-    background-color: #1a1a1d;
-    color: white;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
+    .lang-select:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
 
-.form-group input:focus, .form-group select:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-}
+    .rtl .hero,
+    .rtl .project-body,
+    .rtl .contact-item,
+    .rtl .section-title {
+      text-align: right;
+    }
 
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    backdrop-filter: blur(5px);
-    align-items: center;
-    justify-content: center;
-}
+    .rtl .nav-links {
+      direction: rtl;
+    }
 
-.modal-content {
-    background-color: var(--card-bg);
-    padding: 3rem;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-    border: 1px solid var(--accent-color);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-}
+    .rtl .search-input,
+    .rtl .lang-select {
+      direction: rtl;
+    }
 
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 2.5rem;
-    cursor: pointer;
-    color: var(--text-color);
-    transition: color 0.3s;
-}
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+    }
 
-.close-btn:hover {
-    color: var(--accent-color);
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .hero .title { font-size: 3rem; }
-    .navigation ul { display: none; }
-    section { padding: 3rem 5%; }
-}
-    </style>
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--brand-2);
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #ffffff 25%, var(--brand-2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 690px;
+      font-size: 1.06rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat {
+      padding: 1rem 1.1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,156,255,0.18), transparent 45%, rgba(94,234,212,0.14));
+      pointer-events: none;
+    }
+
+    .window {
+      position: relative;
+      border-radius: 22px;
+      background: #0d142b;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 1rem 1rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .code-preview {
+      padding: 1.3rem;
+      color: #dbe6ff;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .code-preview .line {
+      display: block;
+      color: #d7e0ff;
+    }
+
+    .code-preview .line span {
+      color: #7c9cff;
+    }
+
+    section {
+      padding: 2rem 0 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.7rem, 2vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.4rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .badge-list,
+    .skills-grid,
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .badge,
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #eaf0ff;
+      font-size: 0.92rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .skill-chip {
+      min-height: 62px;
+      border-radius: 18px;
+      justify-content: flex-start;
+      padding-inline: 1rem;
+      font-weight: 600;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.15rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-image {
+      height: 220px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124,156,255,0.22), rgba(94,234,212,0.12));
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-image::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      filter: blur(10px);
+      top: -30px;
+      right: -30px;
+    }
+
+    .project-label {
+      position: relative;
+      z-index: 1;
+      width: calc(100% - 2rem);
+      border-radius: 18px;
+      background: rgba(10, 14, 31, 0.75);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .project-body {
+      padding: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      flex: 1;
+    }
+
+    .project-body h3 {
+      font-size: 1.15rem;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .project-links a {
+      color: var(--brand-2);
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .services-grid,
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card h3,
+    .why-card h3 {
+      margin-bottom: 0.55rem;
+      font-size: 1.05rem;
+    }
+
+    .service-card p,
+    .why-card p,
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .contact-list a {
+      min-height: 48px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 0.9rem;
+    }
+
+    .contact-item span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-preview {
+      margin-top: 2rem;
+      background: rgba(8, 10, 16, 0.98);
+      border: 1px solid rgba(247, 225, 160, 0.12);
+      border-radius: 28px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .project-preview iframe {
+      width: 100%;
+      min-height: 620px;
+      display: block;
+    }
+
+    footer {
+      padding: 1rem 0 2.8rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .grid-2,
+      .contact-grid,
+      .projects-grid,
+      .services-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding-top: 4.2rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        min-height: 72px;
+        align-items: flex-start;
+        padding: 1rem 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero-stats,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card {
+        padding: 0.9rem;
+      }
+
+      .window {
+        min-height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="blur one"></div>
+  <div class="blur two"></div>
 
-    <header>
-        <img src="1.png" alt="House Warriors Logo" class="logo">
-        <nav class="navigation">
-            <ul>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#reservation">Book Now</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero" id="barber-hero">
-        <h1 id="barber-name" class="name">Saif</h1>
-        <h2 class="title">Warrior Barber</h2>
-        <a href="#reservation" class="btn">Book Appointment</a>
-    </section>
-
-    <section id="portfolio">
-        <h2 class="section-title">Latest Cuts</h2>
-        <div id="video-gallery" class="video-grid">
-            <div class="video-item">
-                <video controls muted preload="metadata">
-                    <source src="saif1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="video-item">
-                <video controls muted preload="metadata">
-                    <source src="saif2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="video-item">
-                <video controls muted preload="metadata">
-                    <source src="saif3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">Youssef<span>.</span></a>
+        <div class="nav-actions">
+          <div class="nav-links">
+            <a id="navAbout" href="#about">About</a>
+            <a id="navSkills" href="#skills">Skills</a>
+            <a id="navProjects" href="#projects">Projects</a>
+            <a id="navServices" href="#services">Services</a>
+            <a id="navContact" href="#contact" class="btn btn-secondary">Contact</a>
+          </div>
+          <select id="languageSelect" class="lang-select">
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="ar">AR</option>
+          </select>
         </div>
-    </section>
-
-    <section id="reservation">
-        <h2 class="section-title">Book an Appointment</h2>
-        <div class="reservation-container">
-            <form id="booking-form">
-                <div class="form-group">
-                    <label for="client-name">Your Name</label>
-                    <input type="text" id="client-name" required placeholder="John Doe">
-                </div>
-                <div class="form-group">
-                    <label for="client-phone">Phone Number</label>
-                    <input type="tel" id="client-phone" required placeholder="+216 12345678">
-                </div>
-                <div class="form-group">
-                    <label for="booking-date">Date</label>
-                    <input type="date" id="booking-date" required>
-                </div>
-                <div class="form-group">
-                    <label for="booking-time">Time</label>
-                    <select id="booking-time" required>
-                        <option value="">Select Time</option>
-                        <option value="10:00">10:00 AM</option>
-                        <option value="11:00">11:00 AM</option>
-                        <option value="12:00">12:00 PM</option>
-                        <option value="13:00">01:00 PM</option>
-                        <option value="14:00">02:00 PM</option>
-                        <option value="15:00">03:00 PM</option>
-                        <option value="16:00">04:00 PM</option>
-                        <option value="17:00">05:00 PM</option>
-                        <option value="18:00">06:00 PM</option>
-                        <option value="19:00">07:00 PM</option>
-                        <option value="20:00">08:00 PM</option>
-                    </select>
-                </div>
-                <input type="hidden" id="selected-barber" value="Saif">
-                <button type="submit" class="btn" style="width: 100%;">Confirm Booking</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Modal for Success -->
-    <div id="success-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="document.getElementById('success-modal').style.display='none'">&times;</span>
-            <i class="fas fa-check-circle" style="color: var(--accent-color); font-size: 4rem; margin-bottom: 1rem;"></i>
-            <h2>Booking Confirmed!</h2>
-            <p>Thank you, <span id="modal-client-name"></span>.</p>
-            <p>Your appointment with <span id="modal-barber-name"></span> is set for <span id="modal-date"></span> at <span id="modal-time"></span>.</p>
-            <br>
-            <button onclick="document.getElementById('success-modal').style.display='none'" class="btn">Close</button>
-        </div>
+      </nav>
     </div>
+  </div>
 
-    <footer>
-        <div style="text-align: center; padding: 2rem; opacity: 0.7;">
-            <p>&copy; 2025 House Warriors Barber Shop. All rights reserved.</p>
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal visible">
+        <div id="heroEyebrow" class="eyebrow">Available for freelance work</div>
+        <h1 id="heroTitle">Building <span>modern websites</span> that look sharp and work smoothly.</h1>
+        <p id="heroText">
+          I'm Youssef Chaabani, a web developer focused on responsive business websites, landing pages, and clean user experiences.
+          I build fast, modern interfaces with strong structure, clear design, and attention to detail.
+        </p>
+
+        <div class="hero-actions">
+          <a id="heroBtnProjects" href="#projects" class="btn btn-primary">View Projects</a>
+          <a id="heroBtnContact" href="#contact" class="btn btn-secondary">Hire Me</a>
         </div>
-    </footer>
 
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Booking Form
-    const bookingForm = document.getElementById('booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', handleBookingSubmit);
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>4+</strong>
+            <span id="statLabelProjects">Portfolio Projects</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span id="statLabelResponsive">Responsive Layouts</span>
+          </div>
+          <div class="stat">
+            <strong>Fast</strong>
+            <span id="statLabelDelivery">Delivery & Communication</span>
+          </div>
+        </div>
+      </div>
 
-        // Pre-set date to today
-        const dateInput = document.getElementById('booking-date');
-        if(dateInput) {
-            dateInput.min = new Date().toISOString().split('T')[0];
-            dateInput.addEventListener('change', updateAvailableTimes);
+      <div class="hero-card reveal">
+        <div class="window">
+          <div class="window-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="code-preview">
+            <span class="line"><span>const</span> developer = &#123;</span>
+            <span class="line">&nbsp;&nbsp;name: "Youssef Chaabani",</span>
+            <span class="line">&nbsp;&nbsp;role: "Web Developer",</span>
+            <span class="line">&nbsp;&nbsp;focus: ["Responsive Design", "Landing Pages", "Modern UI"],</span>
+            <span class="line">&nbsp;&nbsp;status: "Available for freelance work"</span>
+            <span class="line">&#125;;</span>
+            <br />
+            <span class="line"><span>function</span> buildWebsite(client) &#123;</span>
+            <span class="line">&nbsp;&nbsp;return "Clean, modern, and user-focused result";</span>
+            <span class="line">&#125;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container grid-2">
+        <div class="card about reveal">
+          <div class="section-title">
+            <h2 id="aboutTitle">About Me</h2>
+          </div>
+          <p id="aboutText1">
+            I create professional websites that help businesses and personal brands present themselves clearly online.
+            My goal is simple: build pages that look modern, feel smooth, and work well on every screen size.
+          </p>
+          <p id="aboutText2">
+            I care about clean code, responsive layouts, simple user flows, and a polished visual result.
+            Whether it is a landing page, portfolio, or small business website, I focus on clarity and quality.
+          </p>
+          <div class="badge-list">
+            <span class="badge">Responsive Design</span>
+            <span class="badge">Modern UI</span>
+            <span class="badge">Clean Code</span>
+            <span class="badge">Landing Pages</span>
+            <span class="badge">Business Websites</span>
+            <span class="badge">Portfolio Sites</span>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="section-title">
+            <h2 id="whyTitle">Why Work With Me</h2>
+          </div>
+          <div class="why-grid">
+            <div class="why-card">
+              <h3 id="whyCard1Title">Responsive First</h3>
+              <p id="whyCard1Text">Every layout is designed to look strong on mobile, tablet, and desktop.</p>
+            </div>
+            <div class="why-card">
+              <h3 id="whyCard2Title">Clean Design</h3>
+              <p id="whyCard2Text">I focus on visual clarity, spacing, modern sections, and a professional feel.</p>
+            </div>
+            <div class="why-card">
+              <h3 id="whyCard3Title">Clear Communication</h3>
+              <p id="whyCard3Text">I keep work simple, organized, and easy to follow from start to finish.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2 id="skillsTitle">Skills</h2>
+          <p id="skillsDesc">Technologies and tools I use to build modern websites and user interfaces.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-chip">HTML5</div>
+          <div class="skill-chip">CSS3</div>
+          <div class="skill-chip">JavaScript</div>
+          <div class="skill-chip">Responsive Design</div>
+          <div class="skill-chip">Git & GitHub</div>
+          <div class="skill-chip">UI / UX Basics</div>
+          <div class="skill-chip">Figma</div>
+          <div class="skill-chip">Landing Pages</div>
+          <div class="skill-chip">Website Optimization</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2 id="projectsTitle">Featured Projects</h2>
+          <p id="projectsDesc">Click on the demo buttons to preview the projects directly on this page.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card project-card">
+            <div class="project-image">
+              <div class="project-label">
+                <strong>Warrior Barber</strong>
+                <p>Barber shop website with bold branding and booking UI.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Warrior Barber Website</h3>
+              <p>
+                A professional website built for Warrior Barber, showcasing their services, pricing, opening hours, and featuring an integrated booking system in a clean responsive layout.
+              </p>
+              <div class="project-tech">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+              </div>
+              <div class="project-links">
+                <button class="btn btn-secondary" data-src="warrior%20barber/barber.html">Live Demo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-image">
+              <div class="project-label">
+                <strong>DrivePro</strong>
+                <p>Premium automotive platform with sleek inventory presentation.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>DrivePro Website</h3>
+              <p>
+                A multi-section website built to present a business clearly with strong calls to action, service sections, and a professional modern design.
+              </p>
+              <div class="project-tech">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">UI Design</span>
+              </div>
+              <div class="project-links">
+                <button class="btn btn-secondary" data-src="index.html">Live Demo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-image">
+              <div class="project-label">
+                <strong>Portfolio</strong>
+                <p>Personal portfolio website with strong visual hierarchy.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Developer Portfolio Website</h3>
+              <p>
+                A polished portfolio homepage built to present skills, projects, and contact details in a modern way that feels professional and easy to navigate.
+              </p>
+              <div class="project-tech">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">Responsive</span>
+              </div>
+              <div class="project-links">
+                <button class="btn btn-secondary" data-src="portfolio.html">Live Demo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-image">
+              <div class="project-label">
+                <strong>Weather App</strong>
+                <p>Professional weather application with multilingual support.</p>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Weather Application</h3>
+              <p>
+                A modern weather app featuring real-time forecasts, city search, and support for multiple languages including English, French, and Arabic.
+              </p>
+              <div class="project-tech">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">OpenWeatherMap API</span>
+              </div>
+              <div class="project-links">
+                <button class="btn btn-secondary" data-src="weather.html">Live Demo</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div id="projectPreview" class="project-preview">
+          <iframe id="projectFrame" src="" title="Project Preview"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2 id="servicesTitle">Services</h2>
+          <p id="servicesDesc">Simple, useful services I can offer to clients and small businesses.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="card service-card">
+            <h3 id="service1Title">Landing Pages</h3>
+            <p id="service1Text">I create focused landing pages designed to present offers clearly and guide visitors to take action.</p>
+          </div>
+          <div class="card service-card">
+            <h3 id="service2Title">Business Websites</h3>
+            <p id="service2Text">I build clean websites for shops, brands, and local businesses that want a stronger online presence.</p>
+          </div>
+          <div class="card service-card">
+            <h3 id="service3Title">Portfolio Websites</h3>
+            <p id="service3Text">I design portfolio websites that present work, skills, and contact details in a professional way.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid reveal">
+        <div class="card contact-card">
+          <div class="section-title">
+            <h2 id="contactTitle">Let's Work Together</h2>
+          </div>
+          <p id="contactText">
+            Need a modern website for your business or personal brand? I am available for freelance work and open to new opportunities.
+          </p>
+
+          <div class="contact-item">
+            <div>
+              <strong id="contactEmailLabel">Email</strong>
+              <span>chaabaniy595@email.com</span>
+            </div>
+            <a id="emailButton" href="mailto:chaabaniy595@email.com" class="btn btn-secondary">Send Email</a>
+          </div>
+
+          <div class="contact-item">
+            <div>
+              <strong id="contactPhoneLabel">Phone</strong>
+              <span>+216 23 144 918</span>
+            </div>
+            <a id="whatsappButton" href="https://wa.me/21623144918" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">WhatsApp</a>
+          </div>
+
+          <div class="contact-item">
+            <div>
+              <strong id="contactInstagramLabel">Instagram</strong>
+              <span>@_ysffffffff_prv_</span>
+            </div>
+            <a id="instagramButton" href="https://www.instagram.com/_ysffffffff_prv_?utm_source=qr&igsh=MW5zZjlsamVjMDV5Zg==" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow</a>
+          </div>
+
+          <div class="contact-item">
+            <div>
+              <strong id="contactLocationLabel">Location</strong>
+              <span>Tunisia</span>
+            </div>
+            <a id="backToTopButton" href="#home" class="btn btn-secondary">Back to Top</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="section-title">
+            <h2 id="quickHighlightsTitle">Quick Highlights</h2>
+          </div>
+          <div class="badge-list">
+            <span class="badge">Freelance Ready</span>
+            <span class="badge">Fast Learner</span>
+            <span class="badge">Clean Layouts</span>
+            <span class="badge">Modern Style</span>
+            <span class="badge">Good Communication</span>
+            <span class="badge">Focused on Quality</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p id="footerText">© 2026 Youssef Chaabani. Built with focus, clean code, and modern design.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
-    }
-});
+      });
+    }, { threshold: 0.12 });
 
-function updateAvailableTimes() {
-    const date = document.getElementById('booking-date').value;
-    const barber = document.getElementById('selected-barber').value;
-    const timeSelect = document.getElementById('booking-time');
-
-    if (!date || !barber) return;
-
-    // Reset all options first
-    Array.from(timeSelect.options).forEach(option => {
-        option.disabled = false;
-        if (option.textContent.includes('(Booked)')) {
-            option.textContent = option.textContent.replace(' (Booked)', '');
-        }
+    document.querySelectorAll('.reveal').forEach((element, index) => {
+      if (!element.classList.contains('visible') || index !== 0) {
+        observer.observe(element);
+      }
     });
 
-    const db = JSON.parse(localStorage.getItem('warrior_reservations')) || [];
-    const bookedTimes = db
-        .filter(res => res.barber === barber && res.date === date)
-        .map(res => res.time);
+    const projectButtons = document.querySelectorAll('[data-src]');
+    const projectPreview = document.getElementById('projectPreview');
+    const projectFrame = document.getElementById('projectFrame');
+    const languageSelect = document.getElementById('languageSelect');
+    const root = document.documentElement;
 
-    Array.from(timeSelect.options).forEach(option => {
-        if (bookedTimes.includes(option.value)) {
-            option.disabled = true;
-            option.textContent += ' (Booked)';
-        }
-    });
-}
-
-function handleBookingSubmit(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('client-name').value;
-    const phone = document.getElementById('client-phone').value;
-    const date = document.getElementById('booking-date').value;
-    const time = document.getElementById('booking-time').value;
-    const barber = document.getElementById('selected-barber').value;
-
-    // Check for conflict
-    if (isSlotTaken(barber, date, time)) {
-        alert(`Sorry, ${barber} is already booked on ${date} at ${time}. Please choose another time.`);
-        return;
-    }
-
-    const reservation = {
-        id: Date.now(),
-        name,
-        phone,
-        date,
-        time,
-        barber,
-        createdAt: new Date().toISOString()
+    const translations = {
+      en: {
+        navAbout: 'About',
+        navSkills: 'Skills',
+        navProjects: 'Projects',
+        navServices: 'Services',
+        navContact: 'Contact',
+        heroEyebrow: 'Available for freelance work',
+        heroTitle: 'Building <span>modern websites</span> that look sharp and work smoothly.',
+        heroText: "I'm Youssef Chaabani, a web developer focused on responsive business websites, landing pages, and clean user experiences. I build fast, modern interfaces with strong structure, clear design, and attention to detail.",
+        heroBtnProjects: 'View Projects',
+        heroBtnContact: 'Hire Me',
+        statLabelProjects: '4+ Portfolio Projects',
+        statLabelResponsive: 'Responsive Layouts',
+        statLabelDelivery: 'Delivery & Communication',
+        aboutTitle: 'About Me',
+        aboutText1: 'I create professional websites that help businesses and personal brands present themselves clearly online. My goal is simple: build pages that look modern, feel smooth, and work well on every screen size.',
+        aboutText2: 'I care about clean code, responsive layouts, simple user flows, and a polished visual result. Whether it is a landing page, portfolio, or small business website, I focus on clarity and quality.',
+        whyTitle: 'Why Work With Me',
+        whyCard1Title: 'Responsive First',
+        whyCard1Text: 'Every layout is designed to look strong on mobile, tablet, and desktop.',
+        whyCard2Title: 'Clean Design',
+        whyCard2Text: 'I focus on visual clarity, spacing, modern sections, and a professional feel.',
+        whyCard3Title: 'Clear Communication',
+        whyCard3Text: 'I keep work simple, organized, and easy to follow from start to finish.',
+        skillsTitle: 'Skills',
+        skillsDesc: 'Technologies and tools I use to build modern websites and user interfaces.',
+        projectsTitle: 'Featured Projects',
+        projectsDesc: 'Click on the demo buttons to preview the projects directly on this page.',
+        servicesTitle: 'Services',
+        servicesDesc: 'Simple, useful services I can offer to clients and small businesses.',
+        service1Title: 'Landing Pages',
+        service1Text: 'I create focused landing pages designed to present offers clearly and guide visitors to take action.',
+        service2Title: 'Business Websites',
+        service2Text: 'I build clean websites for shops, brands, and local businesses that want a stronger online presence.',
+        service3Title: 'Portfolio Websites',
+        service3Text: 'I design portfolio websites that present work, skills, and contact details in a professional way.',
+        contactTitle: "Let's Work Together",
+        contactText: 'Need a modern website for your business or personal brand? I am available for freelance work and open to new opportunities.',
+        contactEmailLabel: 'Email',
+        emailButton: 'Send Email',
+        contactPhoneLabel: 'Phone',
+        whatsappButton: 'WhatsApp',
+        contactInstagramLabel: 'Instagram',
+        instagramButton: 'Follow',
+        contactLocationLabel: 'Location',
+        backToTopButton: 'Back to Top',
+        quickHighlightsTitle: 'Quick Highlights',
+        footerText: '© 2026 Youssef Chaabani. Built with focus, clean code, and modern design.'
+      },
+      fr: {
+        navAbout: 'À propos',
+        navSkills: 'Compétences',
+        navProjects: 'Projets',
+        navServices: 'Services',
+        navContact: 'Contact',
+        heroEyebrow: 'Disponible pour freelance',
+        heroTitle: 'Création de <span>sites modernes</span> qui sont élégants et fluides.',
+        heroText: "Je suis Youssef Chaabani, développeur web spécialisé dans les sites responsive, les pages de destination et les expériences utilisateur nettes. Je construis des interfaces rapides et modernes avec une structure solide, un design clair et une attention aux détails.",
+        heroBtnProjects: 'Voir les projets',
+        heroBtnContact: 'Engagez-moi',
+        statLabelProjects: '4+ Projets de portfolio',
+        statLabelResponsive: 'Layouts Responsive',
+        statLabelDelivery: 'Livraison & Communication',
+        aboutTitle: 'À propos de moi',
+        aboutText1: 'Je crée des sites professionnels qui aident les entreprises et les marques personnelles à se présenter clairement en ligne. Mon objectif est simple : concevoir des pages modernes, fluides et adaptées à toutes les tailles d’écran.',
+        aboutText2: 'Je travaille avec du code propre, des mises en page responsives, des flux utilisateur simples et un rendu visuel soigné. Que ce soit une landing page, un portfolio ou un site professionnel, je privilégie la clarté et la qualité.',
+        whyTitle: 'Pourquoi travailler avec moi',
+        whyCard1Title: 'Responsive en priorité',
+        whyCard1Text: 'Chaque mise en page est conçue pour être performante sur mobile, tablette et desktop.',
+        whyCard2Title: 'Design épuré',
+        whyCard2Text: 'Je mets l’accent sur la clarté visuelle, les espaces, les sections modernes et une sensation professionnelle.',
+        whyCard3Title: 'Communication claire',
+        whyCard3Text: 'Je garde le travail simple, organisé et facile à suivre du début à la fin.',
+        skillsTitle: 'Compétences',
+        skillsDesc: 'Technologies et outils que j’utilise pour construire des sites modernes et des interfaces utilisateur.',
+        projectsTitle: 'Projets phares',
+        projectsDesc: 'Cliquez sur les boutons de démonstration pour prévisualiser les projets directement sur cette page.',
+        servicesTitle: 'Services',
+        servicesDesc: 'Services simples et utiles que je peux proposer aux clients et aux petites entreprises.',
+        service1Title: 'Pages de destination',
+        service1Text: 'Je crée des landing pages ciblées conçues pour présenter les offres clairement et guider les visiteurs vers l’action.',
+        service2Title: 'Sites professionnels',
+        service2Text: 'Je construis des sites clairs pour les boutiques, les marques et les petites entreprises qui veulent une présence en ligne plus forte.',
+        service3Title: 'Portfolios',
+        service3Text: 'Je conçois des sites portfolio qui présentent le travail, les compétences et les contacts de façon professionnelle.',
+        contactTitle: 'Travaillons ensemble',
+        contactText: 'Besoin d’un site moderne pour votre entreprise ou votre marque personnelle ? Je suis disponible pour des missions freelance et ouvert à de nouvelles opportunités.',
+        contactEmailLabel: 'Email',
+        emailButton: 'Envoyer un email',
+        contactPhoneLabel: 'Téléphone',
+        whatsappButton: 'WhatsApp',
+        contactInstagramLabel: 'Instagram',
+        instagramButton: 'Suivre',
+        contactLocationLabel: 'Localisation',
+        backToTopButton: 'Haut de page',
+        quickHighlightsTitle: 'Points forts',
+        footerText: '© 2026 Youssef Chaabani. Construit avec soin, code propre et design moderne.'
+      },
+      ar: {
+        navAbout: 'نبذة',
+        navSkills: 'المهارات',
+        navProjects: 'المشاريع',
+        navServices: 'الخدمات',
+        navContact: 'تواصل',
+        heroEyebrow: 'متاح للعمل الحر',
+        heroTitle: 'أبني <span>مواقع حديثة</span> بجودة عالية وتجربة سلسة.',
+        heroText: 'أنا يوسف الشاعبي، مطور ويب متخصص في مواقع الأعمال المتجاوبة وصفحات الهبوط وتجارب المستخدم النظيفة. أبني واجهات سريعة وحديثة مع بنية قوية وتصميم واضح واهتمام بالتفاصيل.',
+        heroBtnProjects: 'عرض المشاريع',
+        heroBtnContact: 'تواصل معي',
+        statLabelProjects: '4+ مشاريع المحافظ',
+        statLabelResponsive: 'تصاميم متجاوبة',
+        statLabelDelivery: 'التسليم والتواصل',
+        aboutTitle: 'من أنا',
+        aboutText1: 'أصمم مواقع احترافية تساعد الشركات والعلامات التجارية في الظهور بوضوح على الإنترنت. هدفي بسيط: بناء صفحات حديثة وسلسة تعمل بشكل جيد على جميع الأجهزة.',
+        aboutText2: 'أركز على الشفرة النظيفة والتخطيطات المتجاوبة وتدفقات المستخدم البسيطة ونتيجة بصرية مصقولة. سواء كانت صفحة هبوط أو موقع محفظة أو موقع أعمال، أركز على الوضوح والجودة.',
+        whyTitle: 'لماذا تعمل معي',
+        whyCard1Title: 'التجاوب أولاً',
+        whyCard1Text: 'كل تصميم مصمم ليعمل بشكل ممتاز على الهاتف والجهاز اللوحي وسطح المكتب.',
+        whyCard2Title: 'تصميم نظيف',
+        whyCard2Text: 'أركز على الوضوح البصري والمساحات والتقسيمات الحديثة والشعور الاحترافي.',
+        whyCard3Title: 'تواصل واضح',
+        whyCard3Text: 'أجعل العمل بسيطاً ومنظماً وسهل المتابعة من البداية إلى النهاية.',
+        skillsTitle: 'المهارات',
+        skillsDesc: 'التقنيات والأدوات التي أستخدمها لبناء مواقع حديثة وواجهات مستخدم مميزة.',
+        projectsTitle: 'المشاريع المميزة',
+        projectsDesc: 'انقر على أزرار العرض لمعاينة المشاريع مباشرة على هذه الصفحة.',
+        servicesTitle: 'الخدمات',
+        servicesDesc: 'خدمات بسيطة ومفيدة أقدمها للعملاء والشركات الصغيرة.',
+        service1Title: 'صفحات هبوط',
+        service1Text: 'أصمم صفحات هبوط مركزة لعرض العروض بشكل واضح ودفع الزوار إلى اتخاذ الإجراء.',
+        service2Title: 'مواقع أعمال',
+        service2Text: 'أبني مواقع نظيفة للمحلات والعلامات التجارية والشركات الصغيرة التي تريد تواجداً أقوى على الإنترنت.',
+        service3Title: 'مواقع محافظ',
+        service3Text: 'أصمم مواقع محفظة تعرض الأعمال والمهارات والتواصل بطريقة احترافية.',
+        contactTitle: 'لنبدأ العمل معاً',
+        contactText: 'هل تحتاج موقعاً حديثاً لعملك أو علامتك الشخصية؟ أنا متاح للعمل الحر ومفتوح لفرص جديدة.',
+        contactEmailLabel: 'البريد الإلكتروني',
+        emailButton: 'إرسال بريد',
+        contactPhoneLabel: 'الهاتف',
+        whatsappButton: 'واتساب',
+        contactInstagramLabel: 'انستغرام',
+        instagramButton: 'متابعة',
+        contactLocationLabel: 'الموقع',
+        backToTopButton: 'العودة للأعلى',
+        quickHighlightsTitle: 'أهم النقاط',
+        footerText: '© 2026 يوسف الشاعبي. مبني بدقة، كود نظيف، وتصميم حديث.'
+      }
     };
 
-    saveReservation(reservation);
-    showSuccessModal(reservation);
-    e.target.reset();
-}
+    const updateLanguage = (lang) => {
+      const selected = translations[lang] || translations.en;
+      Object.entries(selected).forEach(([id, text]) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+        if (id === 'heroTitle') {
+          element.innerHTML = text;
+        } else {
+          element.textContent = text;
+        }
+      });
 
-function isSlotTaken(barber, date, time) {
-    const db = JSON.parse(localStorage.getItem('warrior_reservations')) || [];
-    return db.some(res =>
-        res.barber === barber &&
-        res.date === date &&
-        res.time === time
-    );
-}
+      root.setAttribute('lang', lang);
+      root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.body.classList.toggle('rtl', lang === 'ar');
+    };
 
-function saveReservation(reservation) {
-    let db = JSON.parse(localStorage.getItem('warrior_reservations')) || [];
-    db.push(reservation);
-    localStorage.setItem('warrior_reservations', JSON.stringify(db));
+    languageSelect.addEventListener('change', (event) => {
+      updateLanguage(event.target.value);
+    });
 
-    console.log("New Reservation Saved to DB:", reservation);
-    console.log("Current Database State:", db);
-}
+    updateLanguage('en');
 
-function showSuccessModal(data) {
-    document.getElementById('modal-client-name').textContent = data.name;
-    document.getElementById('modal-barber-name').textContent = data.barber;
-    document.getElementById('modal-date').textContent = data.date;
-    document.getElementById('modal-time').textContent = data.time;
-
-    const modal = document.getElementById('success-modal');
-    modal.style.display = 'flex';
-}
-    </script>
+    projectButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const src = button.getAttribute('data-src');
+        if(src && projectFrame) {
+          projectFrame.src = src;
+          projectPreview.style.display = 'block';
+          projectPreview.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
