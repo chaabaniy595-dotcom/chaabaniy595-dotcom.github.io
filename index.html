@@ -499,6 +499,21 @@
       font-size: 0.95rem;
     }
 
+    .project-preview {
+      margin-top: 2rem;
+      background: rgba(8, 10, 16, 0.98);
+      border: 1px solid rgba(247, 225, 160, 0.12);
+      border-radius: 28px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .project-preview iframe {
+      width: 100%;
+      min-height: 620px;
+      display: block;
+    }
+
     footer {
       padding: 1rem 0 2.8rem;
       color: var(--muted);
@@ -594,7 +609,7 @@
         <div class="eyebrow">Available for freelance work</div>
         <h1>Building <span>modern websites</span> that look sharp and work smoothly.</h1>
         <p>
-          I’m Youssef Chaabani, a web developer focused on responsive business websites, landing pages, and clean user experiences.
+          I'm Youssef Chaabani, a web developer focused on responsive business websites, landing pages, and clean user experiences.
           I build fast, modern interfaces with strong structure, clear design, and attention to detail.
         </p>
 
@@ -714,19 +729,19 @@
       <div class="container reveal">
         <div class="section-title">
           <h2>Featured Projects</h2>
-          <p>Replace the demo links below with your real project links from GitHub and live demos.</p>
+          <p>Click on the demo buttons to preview the projects directly on this page.</p>
         </div>
 
         <div class="projects-grid">
           <article class="card project-card">
             <div class="project-image">
               <div class="project-label">
-                <strong>Barber Website</strong>
-                <p>Clean landing page for a local barbershop brand.</p>
+                <strong>Warrior Barber</strong>
+                <p>Barber shop website with bold branding and booking UI.</p>
               </div>
             </div>
             <div class="project-body">
-              <h3>Modern Barber Landing Page</h3>
+              <h3>Warrior Barber Website</h3>
               <p>
                 A stylish website concept designed to showcase services, pricing, opening hours, and booking information in a clean responsive layout.
               </p>
@@ -736,8 +751,7 @@
                 <span class="badge">JavaScript</span>
               </div>
               <div class="project-links">
-                <a href="#">Live Demo</a>
-                <a href="#">GitHub</a>
+                <button class="btn btn-secondary" data-src="warrior%20barber/barber.html">Live Demo</button>
               </div>
             </div>
           </article>
@@ -745,12 +759,12 @@
           <article class="card project-card">
             <div class="project-image">
               <div class="project-label">
-                <strong>Business Website</strong>
-                <p>Professional site for a service-based business.</p>
+                <strong>DrivePro</strong>
+                <p>Premium automotive platform with sleek inventory presentation.</p>
               </div>
             </div>
             <div class="project-body">
-              <h3>Responsive Business Website</h3>
+              <h3>DrivePro Website</h3>
               <p>
                 A multi-section website built to present a business clearly with strong calls to action, service sections, and a professional modern design.
               </p>
@@ -760,8 +774,7 @@
                 <span class="badge">UI Design</span>
               </div>
               <div class="project-links">
-                <a href="#">Live Demo</a>
-                <a href="#">GitHub</a>
+                <button class="btn btn-secondary" data-src="index.html">Live Demo</button>
               </div>
             </div>
           </article>
@@ -769,8 +782,8 @@
           <article class="card project-card">
             <div class="project-image">
               <div class="project-label">
-                <strong>Personal Portfolio</strong>
-                <p>Portfolio website with strong visual hierarchy.</p>
+                <strong>Portfolio</strong>
+                <p>Personal portfolio website with strong visual hierarchy.</p>
               </div>
             </div>
             <div class="project-body">
@@ -784,11 +797,14 @@
                 <span class="badge">Responsive</span>
               </div>
               <div class="project-links">
-                <a href="#">Live Demo</a>
-                <a href="#">GitHub</a>
+                <button class="btn btn-secondary" data-src="portfolio.html">Live Demo</button>
               </div>
             </div>
           </article>
+        </div>
+
+        <div id="projectPreview" class="project-preview">
+          <iframe id="projectFrame" src="" title="Project Preview"></iframe>
         </div>
       </div>
     </section>
@@ -821,7 +837,7 @@
       <div class="container contact-grid reveal">
         <div class="card contact-card">
           <div class="section-title">
-            <h2>Let’s Work Together</h2>
+            <h2>Let's Work Together</h2>
           </div>
           <p>
             Need a modern website for your business or personal brand? I am available for freelance work and open to new opportunities.
@@ -830,17 +846,25 @@
           <div class="contact-item">
             <div>
               <strong>Email</strong>
-              <span>Replace with your real email</span>
+              <span>chaabaniy595@email.com</span>
             </div>
             <a href="mailto:chaabaniy595@email.com" class="btn btn-secondary">Send Email</a>
           </div>
 
           <div class="contact-item">
             <div>
-              <strong>GitHub</strong>
-              <span>Show your code and projects</span>
+              <strong>Phone</strong>
+              <span>+216 23 144 918</span>
             </div>
-            <a href="https://github.com/chaabaniy595" target="_blank" rel="noopener" class="btn btn-secondary">View GitHub</a>
+            <a href="https://wa.me/21623144918" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">WhatsApp</a>
+          </div>
+
+          <div class="contact-item">
+            <div>
+              <strong>Instagram</strong>
+              <span>@_ysffffffff_prv_</span>
+            </div>
+            <a href="https://www.instagram.com/_ysffffffff_prv_?utm_source=qr&igsh=MW5zZjlsamVjMDV5Zg==" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow</a>
           </div>
 
           <div class="contact-item">
@@ -888,6 +912,21 @@
       if (!element.classList.contains('visible') || index !== 0) {
         observer.observe(element);
       }
+    });
+
+    const projectButtons = document.querySelectorAll('[data-src]');
+    const projectPreview = document.getElementById('projectPreview');
+    const projectFrame = document.getElementById('projectFrame');
+
+    projectButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const src = button.getAttribute('data-src');
+        if(src && projectFrame) {
+          projectFrame.src = src;
+          projectPreview.style.display = 'block';
+          projectPreview.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     });
   </script>
 </body>
